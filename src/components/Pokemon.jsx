@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, {useState,useEffect} from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,6 +10,39 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
 
 function Pokemon() {
+  const [data, setData] = useState([]);
+
+  const fetchAPI = async () => {
+    try {
+      const response = await fetch(
+        "https://pokeapi.co/api/v2/pokemon?limit=151"
+      );
+      const data = await response.json();
+      const pokemonData = data.results.forEach(function (pokemon){
+        fetchSpec(pokemon);
+    })
+    } catch (error) {
+      throw error;
+    }
+  };
+
+    const fetchSpec = async (pokemon) =>{
+      let url = pokemon.url
+        try{
+            const response = await fetch(url)
+            const pokemonData = await response.json();
+            console.log(pokemonData);
+        }catch(error){
+            throw error;
+        }
+    }
+
+
+
+  useEffect(() => {
+    fetchAPI();
+  }, []);
+
   return (
     <Card sx={{ 
       maxWidth: 300,
@@ -19,7 +52,7 @@ function Pokemon() {
       <CardMedia
         component="img"
         height="140"
-        src = "https://assets.pokemon.com/static2/_ui/img/og-default-image.jpeg"
+        src = {""}
         alt=""
       />
       <CardContent>
@@ -48,4 +81,5 @@ function Pokemon() {
     </Card>
   );
 }
+
 export default Pokemon;
