@@ -1,5 +1,6 @@
-import { Container } from "@mui/material";
+import { Container, Box } from "@mui/material";
 import Pokemon from "./Pokemon";
+import PokemonCard from "./PokemonCard";
 
 function AllPokemon() {
   return (
@@ -9,7 +10,7 @@ function AllPokemon() {
           boxShadow: 3,
           maxWidth: "lg",
           minHeight: "78vh",
-          boxSizing : "border-box",
+          boxSizing: "border-box",
           bgcolor: (theme) =>
             theme.palette.mode === "dark" ? "#101010" : "#fff",
           color: (theme) =>
@@ -23,7 +24,15 @@ function AllPokemon() {
         }}
       >
         <h1> Pokemon List </h1>
-        <Pokemon/>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Pokemon />
+          <PokemonCard />
+        </Box>
       </Container>
     </>
   );

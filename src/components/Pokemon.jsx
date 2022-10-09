@@ -13,7 +13,8 @@ function Pokemon() {
   return (
     <Card sx={{ 
       maxWidth: 300,
-      maxHeight:"auto",
+      maxHeight: 375,
+      m : 1
       }}>
       <CardMedia
         component="img"
