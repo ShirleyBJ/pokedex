@@ -1,0 +1,32 @@
+[
+    {
+        "id" : "1",
+        "type" : "eau",
+        "color" : "deepblue"
+    },
+    {
+        "id" : "2",
+        "type" : "terre",
+        "color" : "brown"
+    },
+    {
+        "id" : "3",
+        "type" : "feu",
+        "color" : "orange"
+    },
+    {
+        "id" : "4",
+        "type" : "air",
+        "color" : "lightblue"
+    },
+    {
+        "id" : "5",
+        "type" : "psy",
+        "color" : "purple"
+    },
+    {
+        "id" : "6",
+        "type" : "acier",
+        "color" : "steel"
+    }
+]

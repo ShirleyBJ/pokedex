@@ -1,14 +1,15 @@
-import { Box } from "@mui/material";
-import { shadows } from "@mui/system";
+import { Container } from "@mui/material";
+import Pokemon from "./Pokemon";
 
 function AllPokemon() {
   return (
     <>
-      <Box
+      <Container
         sx={{
           boxShadow: 3,
-          width: "95%",
-          height: "75vh",
+          maxWidth: "lg",
+          minHeight: "78vh",
+          boxSizing : "border-box",
           bgcolor: (theme) =>
             theme.palette.mode === "dark" ? "#101010" : "#fff",
           color: (theme) =>
@@ -22,7 +23,8 @@ function AllPokemon() {
         }}
       >
         <h1> Pokemon List </h1>
-      </Box>
+        <Pokemon/>
+      </Container>
     </>
   );
 }
