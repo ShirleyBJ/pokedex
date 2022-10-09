@@ -26,13 +26,22 @@ export default function Navbar() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Pokédex
             </Typography>
-            <ForwardToInboxSharpIcon
-              fontSize="large"
-              style={{
-                margin: "15px",
-              }}
-            />
-            <StarIcon fontSize="large" />
+            <IconButton>
+              <ForwardToInboxSharpIcon
+                fontSize="large"
+                style={{
+                  margin: "15px",
+                  color : "white",
+                }}
+              />
+            </IconButton>
+            <IconButton>
+              <StarIcon 
+                fontSize="large"
+                style={{ 
+                  color : "white",
+                }} />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </Box>
