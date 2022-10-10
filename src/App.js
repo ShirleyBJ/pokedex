@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-import Pokemons from './components/Pokemons';
+import PokemonsList from './components/PokemonsList';
 import SearchBar from './components/SearchBar';
 import Footer from './components/Footer';
 
@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Navbar/>
       <SearchBar/>
-      <Pokemons/>
+      <PokemonsList/>
       <Footer/>
     </div>
   );
