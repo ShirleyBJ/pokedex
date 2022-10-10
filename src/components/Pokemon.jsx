@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -11,8 +12,7 @@ import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/395.svg
 
 function Pokemon({pokemonName,pokemonUrl}) {
-  const url = {pokemonUrl};
-
+//TODO: Use react router to get params from urls
   return (
     <div>
       <Card
