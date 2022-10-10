@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Box } from "@mui/material";
 import Pokemon from "./Pokemon";
 import PokemonCard from "./PokemonCard";
@@ -30,7 +31,7 @@ function AllPokemon() {
             justifyContent: "space-between",
           }}
         >
-          <Pokemon />
+          <Pokemon/>
           <PokemonCard />
         </Box>
       </Container>
