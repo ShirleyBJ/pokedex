@@ -1,14 +1,20 @@
 import * as React from "react";
 import { Link, Outlet } from "react-router-dom";
 
-import {AppBar,Box, Toolbar, Typography,IconButton } from "@mui/material";
-import {CatchingPokemonTwoToneIcon,StarIcon,ForwardToInboxSharpIcon } from "@mui/icons-material";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import CatchingPokemonTwoToneIcon from "@mui/icons-material/CatchingPokemonTwoTone";
+import StarIcon from "@mui/icons-material/Star";
+import ForwardToInboxSharpIcon from "@mui/icons-material/ForwardToInboxSharp";
 
 
 export default function Navbar() {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1 , mb:2}}>
         <AppBar position="static" color="secondary">
           <Toolbar>
             <IconButton
@@ -42,26 +48,7 @@ export default function Navbar() {
           </Toolbar>
         </AppBar>
       </Box>
-      <Container
-      sx={{
-        boxShadow: 3,
-        maxWidth: "lg",
-        minHeight: "78vh",
-        boxSizing: "border-box",
-        bgcolor: (theme) =>
-          theme.palette.mode === "dark" ? "#101010" : "#fff",
-        color: (theme) =>
-          theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-        p: 1,
-        m: "0 auto",
-        borderRadius: 2,
-        textAlign: "center",
-        fontSize: "0.875rem",
-        fontWeight: "700",
-      }}
-    >
       <Outlet/>
-    </Container>
     </>
   );
 }

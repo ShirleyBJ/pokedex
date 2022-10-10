@@ -9,22 +9,24 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 
-//https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/395.svg
-
+//TODO: Put first lette of the name in upperCase
+//TODO: Pass id/name in the link by slug 
 function Pokemon({pokemonName,pokemonUrl}) {
-//TODO: Use react router to get params from urls
+  //Get ID from the url 
+  const url = pokemonUrl.split('/');
+  const pokemonID = url[6];
   return (
     <div>
       <Card
         sx={{
-          minWidth: 300,
-          maxHeight: 375,
+          maxWidth: "auto",
+          maxHeight: "auto",
           m: 1,
         }}
       >
-        <CardMedia component="img" height="140" src={""} alt="" />
+        <CardMedia component="img" height="350" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg`} alt="" />
         <CardContent>
-          <Typography variant="subtitle">#ID Pokemon</Typography>
+          <Typography variant="subtitle"># {pokemonID}</Typography>
           <Typography gutterBottom variant="h5" component="div">
             {pokemonName}
           </Typography>
@@ -43,7 +45,7 @@ function Pokemon({pokemonName,pokemonUrl}) {
             padding="5px"
             endIcon={<DoubleArrowIcon />}
           >
-            Détails
+            <Link to="/pokemonCard">Détails</Link>
           </Button>
         </CardActions>
       </Card>
