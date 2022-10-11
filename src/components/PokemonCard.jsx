@@ -41,7 +41,7 @@ function PokemonCard() {
         <Typography gutterBottom variant="h5" component="div">
           {pokemonName}
         </Typography>
-        <BadgeType />
+        <BadgeType typeList={data}/>
         <Typography variant="body2" color="text.secondary">
           Description Pokémon
         </Typography>
