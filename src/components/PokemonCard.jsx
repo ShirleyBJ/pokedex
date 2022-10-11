@@ -63,9 +63,7 @@ function PokemonCard() {
           </div>
         </Box>
         <CardSubtitle title="Stats" />
-        <StatBar stats={98} statTitle="HP" />
-        <StatBar stats={55} statTitle="Attaque" />
-        <StatBar stats={88} statTitle="Défense" />
+        <StatBar statsDetails={data}/>
       </CardContent>
       <Box><Link to="/pokemonList">Back to List</Link></Box>
     </Card>

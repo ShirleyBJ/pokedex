@@ -1,10 +1,12 @@
 import {LinearProgress, Box} from '@mui/material';
 
 
-function StatBar({stats, statTitle}) {
+function StatBar({statsDetails}) {
+  console.log(statsDetails);
   return (
     <>
-      <Box
+      {statsDetails.stats.map((statDetail,index) => (
+        <Box
         sx={{
           display: "flex",
           alignItems: "baseline",
@@ -12,19 +14,21 @@ function StatBar({stats, statTitle}) {
         }}
       >
         <Box sx={{width:"15%"}}>
-          <span>{statTitle}</span>
+          <span>{statDetail.stat.name}</span>
         </Box>
         <Box>
-          <span>{stats}</span>
+          <span>{statDetail.base_stat}</span>
         </Box>
         <Box sx={{ width: "70%" }}>
           <LinearProgress
             variant="determinate"
-            value={stats}
+            value={statDetail.base_stat}
             color="secondary"
           />
         </Box>
       </Box>
+      ))}
+      
     </>
   );
 }
