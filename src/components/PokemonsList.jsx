@@ -6,6 +6,7 @@ import { Container, Box } from "@mui/material";
 import Pokemon from "./Pokemon";
 import SearchBar from './SearchBar';
 
+//TDODO: filtering of pokemon by name
 function PokemonsList() {
   const { isLoading, data, error } = useQuery("pokemonUrl", () =>
   fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
@@ -45,8 +46,8 @@ if(error) return 'An error has occured' + error.message
             flexWrap: "wrap",
           }}
         >
-          {data.results.map((pokemon) => (
-            <Pokemon pokemonName={pokemon.name} pokemonUrl={pokemon.url} />
+          {data.results.map((pokemon, index) => (
+            <Pokemon key={index} pokemonName={pokemon.name} pokemonUrl={pokemon.url} />
           ))}
         </Box>
       </Container>

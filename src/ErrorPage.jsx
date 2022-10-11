@@ -1,6 +1,6 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, Link } from "react-router-dom";
 
-//TODO: Custom error page
+//TODO: Custom error page + add button return home
 export default function ErrorPage() {
   const error = useRouteError();
   console.error(error);
@@ -12,6 +12,7 @@ export default function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
+      <Link to="/home">Back to home</Link>
     </div>
   );
 }
