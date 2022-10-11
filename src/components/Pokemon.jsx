@@ -45,7 +45,7 @@ function Pokemon({pokemonName,pokemonUrl}) {
             padding="5px"
             endIcon={<DoubleArrowIcon />}
           >
-            <Link to="/pokemonCard">Détails</Link>
+            <Link to="/pokemonCard" state={pokemonName}>Détails</Link>
           </Button>
         </CardActions>
       </Card>

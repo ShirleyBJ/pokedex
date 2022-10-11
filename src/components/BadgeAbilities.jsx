@@ -5,8 +5,9 @@ function BadgeAbilities() {
   return (
     <>
     {dataAbilities.map((data) => (
-        data.abilities.map((abilitiesName) => 
+        data.abilities.map((abilitiesName, index) => 
         <Chip 
+        key = {index}
         label = { abilitiesName.ability.name}
         sx={{
           m: 0.5,

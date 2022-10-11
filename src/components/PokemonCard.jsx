@@ -5,11 +5,14 @@ import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
 
 import * as React from "react";
-import {Link} from 'react-router-dom'
+import { Link, useLocation} from 'react-router-dom'
 
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 function PokemonCard() {
+  const location = useLocation();
+  const data = location.state;
+  console.log(data);
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia

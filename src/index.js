@@ -14,6 +14,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+
 //TODO: route retour vers liste
 const router = createBrowserRouter([
   {
@@ -45,9 +46,9 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router}/>
-    </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
