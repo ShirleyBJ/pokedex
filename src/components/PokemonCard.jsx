@@ -5,14 +5,27 @@ import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
 
 import * as React from "react";
+import { useQuery } from "react-query";
 import { Link, useLocation} from 'react-router-dom'
 
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 
+//TODO: use function convert on height and weight
 function PokemonCard() {
   const location = useLocation();
-  const data = location.state;
-  console.log(data);
+  const pokemonName = location.state;
+  console.log(pokemonName);
+
+  const { isLoading, data, error } = useQuery("detailsPokemon", () =>
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    .then((res) =>
+      res.json()
+    )
+  );
+
+  if(isLoading) return 'Loading...'
+
+  if(error) return 'An error occurred ' + error.message
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -23,17 +36,17 @@ function PokemonCard() {
       />
       <CardContent>
         <Typography gutterBottom variant="subtitle">
-          #ID Pokémon
+          #{data.id}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          Nom Pokémon
+          {pokemonName}
         </Typography>
         <BadgeType />
         <Typography variant="body2" color="text.secondary">
           Description Pokémon
         </Typography>
         <CardSubtitle title="Abilities" />
-        <BadgeAbilities />
+        <BadgeAbilities abilitiesList={data} />
         <Box
           sx={{
             display: "flex",
@@ -42,11 +55,11 @@ function PokemonCard() {
         >
           <div>
             <CardSubtitle title="Height" />
-            <Badge height="2" />
+            <Badge height = {data.height} />
           </div>
           <div>
             <CardSubtitle title="Weight" />
-            <Badge weight="9" />
+            <Badge weight = {data.weight} />
           </div>
         </Box>
         <CardSubtitle title="Stats" />
