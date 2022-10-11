@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -24,7 +24,7 @@ export default function Navbar() {
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-            <Link to="/home"><CatchingPokemonTwoToneIcon fontSize="large" /></Link>
+            <Link to="/"><CatchingPokemonTwoToneIcon fontSize="large" /></Link>
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Pokédex
@@ -48,7 +48,6 @@ export default function Navbar() {
           </Toolbar>
         </AppBar>
       </Box>
-      <Outlet/>
     </>
   );
 }

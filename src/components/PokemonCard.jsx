@@ -5,6 +5,8 @@ import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
 
 import * as React from "react";
+import {Link} from 'react-router-dom'
+
 import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 function PokemonCard() {
@@ -49,6 +51,7 @@ function PokemonCard() {
         <StatBar stats={55} statTitle="Attaque" />
         <StatBar stats={88} statTitle="Défense" />
       </CardContent>
+      <Box><Link to="/pokemonList">Back to List</Link></Box>
     </Card>
   );
 }

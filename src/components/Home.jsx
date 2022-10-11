@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 
-//TODO : Make home interface and add button to enter in the app
+//TODO : Make home interface 
 function Home(){
     return (
         <>
