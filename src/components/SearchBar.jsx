@@ -39,7 +39,6 @@ function SearchBar({handleChange, value}) {
           />
         </FormControl>
       </Box>
-      <p>{value}</p>
     </>
   );
 }
