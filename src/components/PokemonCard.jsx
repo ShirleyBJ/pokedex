@@ -15,8 +15,8 @@ function PokemonCard() {
   const location = useLocation();
   const pokemonName = location.state;
 
-    //Use params from url
-    const {pokemonParamsName} = useParams();
+  //Use params from url
+  const {pokemonParamsName} = useParams();
 
   const { isLoading, data, error } = useQuery("detailsPokemon", () =>
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName == null ? pokemonParamsName : pokemonName}`)

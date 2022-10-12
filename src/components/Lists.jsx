@@ -2,9 +2,9 @@ import { Container, Box } from "@mui/material";
 
 import Pokemon from "./Pokemon";
 
-function Lists({ pokemonSearched = []}){
+function Lists({ data, pokemonSearched = []}){
   if (pokemonSearched.length === 0) {
-    return <h1>No pokemon found</h1>
+    pokemonSearched = data.results
   }
     return (
       <>

@@ -13,17 +13,18 @@ function PokemonsList() {
   .then((res) => res.json())
 );
 
-//Filtering pokemon data
-const [value, setValue] = useState('');
-
-const [filteredPokemon, setFilteredPokemon] = useState(data);
-
 const handleChange = (e) => {
   setValue(e.target.value)
   setFilteredPokemon(
     data.results.filter((pokemon, index)=>pokemon.name.toLowerCase().includes(e.target.value))
   )
 }
+
+//Filtering pokemon data
+const [value, setValue] = useState('');
+
+const [filteredPokemon, setFilteredPokemon] = useState(data);
+
 
 if (isLoading) return 'Loading...'
 
@@ -32,7 +33,7 @@ if(error) return 'An error has occured' + error.message
   return (
     <>
       <SearchBar handleChange={handleChange} value={value}/>
-      <Lists pokemonSearched={filteredPokemon}/>
+      <Lists data={data} pokemonSearched={filteredPokemon}/>
     </>
   );
 }
