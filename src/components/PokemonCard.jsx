@@ -6,18 +6,20 @@ import StatBar from "./StatBar";
 
 import * as React from "react";
 import { useQuery } from "react-query";
-import { Link, useLocation} from 'react-router-dom'
+import { Link, useLocation, useParams} from 'react-router-dom'
 
 import { Box, Card, CardContent, CardMedia, Typography , Button} from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
-//TODO: use function convert on height and weight
 function PokemonCard() {
   const location = useLocation();
   const pokemonName = location.state;
 
+    //Use params from url
+    const {pokemonParamsName} = useParams();
+
   const { isLoading, data, error } = useQuery("detailsPokemon", () =>
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName == null ? pokemonParamsName : pokemonName}`)
     .then((res) =>
       res.json()
     )
@@ -26,6 +28,7 @@ function PokemonCard() {
   if(isLoading) return 'Loading...'
 
   if(error) return 'An error occurred ' + error.message
+
 
   //Function to convert weight into kilograms
 const convertToKilogram = (weight) => {

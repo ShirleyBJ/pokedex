@@ -38,6 +38,10 @@ const router = createBrowserRouter([
         path : "/pokemonCard",
         element: <PokemonCard/>
       },
+      {
+        path : "/pokemonCard/:pokemonParamsName",
+        element: <PokemonCard/>
+      },
     ]
   },
 ])

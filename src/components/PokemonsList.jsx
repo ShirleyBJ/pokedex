@@ -5,6 +5,7 @@ import { useState } from "react";
 import SearchBar from './SearchBar';
 import Lists from './Lists'
 
+//! Problems on type of search on my app : data and filteredPokemon have not the same path data.result.map & filteredPokemon.map
 
 function PokemonsList() {
   const { isLoading, data, error } = useQuery("pokemonUrl", () =>
@@ -31,7 +32,7 @@ if(error) return 'An error has occured' + error.message
   return (
     <>
       <SearchBar handleChange={handleChange} value={value}/>
-      <Lists data={data} pokemonSearched={filteredPokemon}/>
+      <Lists pokemonSearched={filteredPokemon}/>
     </>
   );
 }
