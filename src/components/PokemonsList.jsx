@@ -5,7 +5,7 @@ import { useState } from "react";
 import SearchBar from './SearchBar';
 import Lists from './Lists'
 
-//TDODO: filtering of pokemon by name
+
 function PokemonsList() {
   const { isLoading, data, error } = useQuery("pokemonUrl", () =>
   fetch('https://pokeapi.co/api/v2/pokemon?limit=151')
@@ -19,8 +19,6 @@ const [filteredPokemon, setFilteredPokemon] = useState(data);
 
 const handleChange = (e) => {
   setValue(e.target.value)
-  console.log(e.target.value)
-
   setFilteredPokemon(
     data.results.filter((pokemon, index)=>pokemon.name.toLowerCase().includes(e.target.value))
   )
