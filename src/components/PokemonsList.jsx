@@ -1,5 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
+import { useState } from "react";
+
 
 import { Container, Box } from "@mui/material";
 
@@ -13,13 +15,27 @@ function PokemonsList() {
   .then((res) => res.json())
 );
 
+//Filtering pokemon data
+const [value, setValue] = useState('');
+
+const [filteredPokemon, setFilteredPokemon] = useState(data);
+
+const handleChange = (e) => {
+  setValue(e.target.value)
+  console.log(e.target.value)
+
+  setFilteredPokemon(
+    data.results.filter((pokemon, index)=>pokemon.name.toLowerCase().includes(e.target.value))
+  )
+}
+
 if (isLoading) return 'Loading...'
 
 if(error) return 'An error has occured' + error.message
 
   return (
     <>
-      <SearchBar />
+      <SearchBar handleChange={handleChange} value={value}/>
       <Container
         sx={{
           boxShadow: 3,

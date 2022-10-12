@@ -4,7 +4,7 @@ import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
 
-function SearchBar() {
+function SearchBar({handleChange, value}) {
   return (
     <>
       <Box sx={{ display: "flex", justifyContent: "center", }}>
@@ -29,6 +29,7 @@ function SearchBar() {
             Rechercher un pokémon par son ID ou son nom
           </InputLabel>
           <Input
+            onChange={ handleChange }
             id="outlined-basic"
             type="search"
             color="secondary"
@@ -38,6 +39,7 @@ function SearchBar() {
           />
         </FormControl>
       </Box>
+      <p>{value}</p>
     </>
   );
 }
