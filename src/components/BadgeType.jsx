@@ -8,7 +8,6 @@ function BadgeType({typeList}) {
       <Chip 
       key= {index} 
       label={type.type.name} 
-      color= "secondary" 
       sx={{
         m: 0.5,
       }}

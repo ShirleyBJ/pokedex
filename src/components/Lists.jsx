@@ -2,10 +2,15 @@ import { Container, Box } from "@mui/material";
 
 import Pokemon from "./Pokemon";
 
-function Lists({ data, pokemonSearched = []}){
-  if (pokemonSearched.length === 0) {
-    pokemonSearched = data.results
+function Lists({ data , filteredPokemon = []}){
+  if (filteredPokemon.length === 0) {
+    <h1>"No pokemon found."</h1>
+    filteredPokemon = data.results
   }
+
+  console.log("data - List", data);
+  console.log("data filtered - List", filteredPokemon);
+
     return (
       <>
         <Container
@@ -34,7 +39,7 @@ function Lists({ data, pokemonSearched = []}){
               flexWrap: "wrap",
             }}
           >
-            {pokemonSearched.map((pokemon, index) => (
+            {filteredPokemon.map((pokemon, index) => (
               <Pokemon
                 key={index}
                 pokemonName={pokemon.name}
