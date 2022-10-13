@@ -3,13 +3,9 @@ import { Container, Box } from "@mui/material";
 import Pokemon from "./Pokemon";
 
 function Lists({ data , filteredPokemon = []}){
-  if (filteredPokemon.length === 0) {
-    <h1>"No pokemon found."</h1>
+  if (filteredPokemon.length === 0) { 
     filteredPokemon = data.results
   }
-
-  console.log("data - List", data);
-  console.log("data filtered - List", filteredPokemon);
 
     return (
       <>

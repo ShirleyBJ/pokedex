@@ -5,7 +5,6 @@ import { useState } from "react";
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
 
-//! Problems on type of search on my app : data and filteredPokemon have not the same path data.result.map & filteredPokemon.map
 
 function PokemonsList() {
 
@@ -16,7 +15,7 @@ function PokemonsList() {
 
   //Filtering pokemon data
   const [value, setValue] = useState("");
-  const [filteredPokemon, setFilteredPokemon] = useState(      );
+  const [filteredPokemon, setFilteredPokemon] = useState();
 
   const handleChange = (e) => {
     setValue(e.target.value);
