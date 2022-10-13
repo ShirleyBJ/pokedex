@@ -12,7 +12,6 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 //TODO: Put first letter of the name in upperCase
 //TODO: Pass id/name in the link by slug 
-//TODO: Create fonction to handle click - add to localStorage
 
 function Pokemon({pokemonName,pokemonUrl}) {
   //Get ID from the url 
@@ -20,8 +19,13 @@ function Pokemon({pokemonName,pokemonUrl}) {
   const pokemonID = url[6];
 
   const addFavorites = (e) => {
-    console.log(e.target);
-    console.log("Add to favorites");
+    const id = e.target.getAttribute('data-testid');
+    const name = e.target.getAttribute('data-name');
+    if(id != null && name != null){
+      localStorage.setItem(id, JSON.stringify(name))
+    } else {
+      alert("Error: id or name is null");
+    }
   }
 
   return (
@@ -73,6 +77,5 @@ function Pokemon({pokemonName,pokemonUrl}) {
     </div>
   );
 }
-
 
 export default Pokemon;
