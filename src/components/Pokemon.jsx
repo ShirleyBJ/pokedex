@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect} from "react";
 import {Link} from "react-router-dom";
 
 import Card from "@mui/material/Card";
@@ -17,16 +17,24 @@ function Pokemon({pokemonName,pokemonUrl}) {
   //Get ID from the url 
   const url = pokemonUrl.split('/');
   const pokemonID = url[6];
+  const [pokemonStored, setPokemonStored] = useState([]);
 
   const addFavorites = (e) => {
     const id = e.target.getAttribute('data-testid');
     const name = e.target.getAttribute('data-name');
     if(id != null && name != null){
-      localStorage.setItem(id, JSON.stringify(name))
+      setPokemonStored({"id":id,"name":name});
+      console.log(pokemonStored)
     } else {
       alert("Error: id or name is null");
     }
   }
+
+  useEffect(() => {
+    if(pokemonStored != null || pokemonStored !== "undefined"){
+      localStorage.setItem("pokemon", JSON.stringify(pokemonStored));
+    }
+  }, [pokemonStored]);
 
   return (
     <div>
@@ -55,7 +63,7 @@ function Pokemon({pokemonName,pokemonUrl}) {
             justifyContent: "space-between",
           }}
         >
-          <StarBorderIcon
+                    <StarBorderIcon
             color="secondary"
             data-testid={pokemonID.toString()}
             data-name={pokemonName.toString()}

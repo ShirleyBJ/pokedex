@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
+import SelectType from "./SelectType";
 
 
 function PokemonsList() {
@@ -28,11 +29,12 @@ function PokemonsList() {
 
   if (isLoading) return "Loading...";
 
-  if (error) return "An error has occured" + error.message;
+  if (error) return "An error has occured " + error.message;
 
   return (
     <>
       <SearchBar handleChange={handleChange} value={value} />
+      <SelectType/>
       <Lists data={data} filteredPokemon={filteredPokemon}/>
     </>
   );
