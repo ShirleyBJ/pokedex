@@ -1,16 +1,37 @@
-import React from "react";
+import React, {useEffect, useState}  from "react";
 
+//TODO : afficher les données de maniére dynamique
 function Favorites() {
-  //iterate localStorage
-  for (var i = 0; i < localStorage.length; i++) {
-    // set iteration key name
-    var key = localStorage.key(i);
-    // use key name to retrieve the corresponding value
-    var value = localStorage.getItem(key);
-    // console.log the iteration key and value
-    console.log("Key: " + key + ", Value: " + value);
+  //get the data from local storage
+  const pokemonStored = JSON.parse(localStorage.getItem("pokemons"));
+
+  const [updateLocalStorage, setUpdateLocalStorage] = useState(pokemonStored);
+
+  const removeFavorites = (e) => {
+    const updatedPokemon = pokemonStored.filter((pokemon) => pokemon.id !== e.id);
+    console.log(updatedPokemon)
+    setUpdateLocalStorage(updatedPokemon);
   }
-  return <h1>Favorites</h1>;
+
+  console.log(updateLocalStorage);
+
+  useEffect(() => {
+    localStorage.setItem('pokemons', JSON.stringify(updateLocalStorage));
+  },[updateLocalStorage]);
+
+
+  return (
+    <div>
+      <h1>Favorites</h1>
+      {pokemonStored.map((pokemon) => (
+        <ul key={pokemon.id}>
+          <li><p>{pokemon.id}</p>
+          <p>{pokemon.name}</p>
+          <button onClick={ ()=>removeFavorites(pokemon) }>Remove from favorites</button></li>
+        </ul>
+      ))}
+    </div>
+  );
 }
 
 export default Favorites;

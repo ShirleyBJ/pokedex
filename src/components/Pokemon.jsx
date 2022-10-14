@@ -13,28 +13,10 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 //TODO: Put first letter of the name in upperCase
 //TODO: Pass id/name in the link by slug 
 
-function Pokemon({pokemonName,pokemonUrl}) {
+function Pokemon({pokemonName,pokemonUrl, addFavorites}) {
   //Get ID from the url 
   const url = pokemonUrl.split('/');
   const pokemonID = url[6];
-  const [pokemonStored, setPokemonStored] = useState([]);
-
-  const addFavorites = (e) => {
-    const id = e.target.getAttribute('data-testid');
-    const name = e.target.getAttribute('data-name');
-    if(id != null && name != null){
-      setPokemonStored({"id":id,"name":name});
-      console.log(pokemonStored)
-    } else {
-      alert("Error: id or name is null");
-    }
-  }
-
-  useEffect(() => {
-    if(pokemonStored != null || pokemonStored !== "undefined"){
-      localStorage.setItem("pokemon", JSON.stringify(pokemonStored));
-    }
-  }, [pokemonStored]);
 
   return (
     <div>
@@ -63,11 +45,13 @@ function Pokemon({pokemonName,pokemonUrl}) {
             justifyContent: "space-between",
           }}
         >
-                    <StarBorderIcon
+          <StarBorderIcon
             color="secondary"
-            data-testid={pokemonID.toString()}
-            data-name={pokemonName.toString()}
-            onClick={addFavorites}
+            onClick={() => addFavorites(
+              {name : pokemonName.toString(),
+              id : pokemonID.toString()
+              }
+            )}
           />
           <Button
             size="25px"
