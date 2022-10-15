@@ -3,7 +3,6 @@ import { useRouteError, Link } from "react-router-dom";
 //TODO: Custom error page + add button return home
 export default function ErrorPage() {
   const error = useRouteError();
-  console.error(error);
 
   return (
     <div id="error-page">

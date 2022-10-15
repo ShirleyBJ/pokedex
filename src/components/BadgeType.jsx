@@ -1,3 +1,4 @@
+import "./BadgeType.scss";
 import Chip from "@mui/material/Chip";
 
 //TODO: change the color of label whith types of pokemon
@@ -6,6 +7,7 @@ function BadgeType({typeList}) {
     <>
     {typeList.types.map((type, index) => (
       <Chip 
+      className={`badge-type--${type.type.name}`}
       key= {index} 
       label={type.type.name} 
       sx={{

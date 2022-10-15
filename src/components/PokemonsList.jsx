@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useState } from "react";
-// import {useSearchParams, createSearchParams} from "react-router-dom"
+import {useSearchParams, createSearchParams} from "react-router-dom"
 
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
@@ -18,11 +18,11 @@ function PokemonsList() {
   //Filtering pokemon data
   const [value, setValue] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState();
-  // const [params, setParams] = useSearchParams();
+  const [params, setParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value);
-  // setParams(createSearchParams({search : e.target.value}));
+    setParams(createSearchParams({search : e.target.value}));
     setFilteredPokemon(
       data.results.filter((pokemon, index) =>
         pokemon.name.includes(e.target.value.toLowerCase())
