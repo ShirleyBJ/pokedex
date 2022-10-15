@@ -16,40 +16,41 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+import { MainProvider } from "./contexts/Main";
 
 const router = createBrowserRouter([
   {
-    path : "/",
-    element: <App/>,
-    errorElement: <ErrorPage/>,
-    children : [
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path : "",
-        element: <Home/>
+        path: "",
+        element: <Home />
       },
       {
-        path : "/favorites",
-        element: <Favorites/>
+        path: "/favorites",
+        element: <Favorites />
       },
       {
-        path : "/pokemonList",
-        element: <PokemonList/>
+        path: "/pokemonList",
+        element: <PokemonList />
       },
       {
-        path : "/pokemonListType",
-        element: <PokemonListType/>
+        path: "/pokemonListType",
+        element: <PokemonListType />
       },
       {
-        path : "/pokemonCard",
-        element: <PokemonCard/>
+        path: "/pokemonCard",
+        element: <PokemonCard />
       },
       {
-        path : "/pokemonCard/:pokemonParamsName",
-        element: <PokemonCard/>
+        path: "/pokemonCard/:pokemonParamsName",
+        element: <PokemonCard />
       },
       {
-        path : "/contact",
-        element: <Contact/>
+        path: "/contact",
+        element: <Contact />
       },
     ]
   },
@@ -59,9 +60,11 @@ const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-      </QueryClientProvider>
+  <MainProvider>
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  </MainProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
