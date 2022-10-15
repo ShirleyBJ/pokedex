@@ -1,84 +1,72 @@
 import React, {useState,useEffect} from "react";
+import {Link} from "react-router-dom";
+
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import BadgeType from "./BadgeType";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 
+//TODO: Put first letter of the name in upperCase
+//TODO: Pass id/name in the link by slug 
 
-function Pokemon() {
-  const [data, setData] = useState([]);
-
-  const fetchAPI = async () => {
-    try {
-      const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon?limit=151"
-      );
-      const data = await response.json();
-      const pokemonData = data.results.forEach(function (pokemon){
-        fetchSpec(pokemon);
-    })
-    } catch (error) {
-      throw error;
-    }
-  };
-
-    const fetchSpec = async (pokemon) =>{
-      let url = pokemon.url
-        try{
-            const response = await fetch(url)
-            const pokemonData = await response.json();
-            console.log(pokemonData);
-        }catch(error){
-            throw error;
-        }
-    }
-
-
-
-  useEffect(() => {
-    fetchAPI();
-  }, []);
+function Pokemon({pokemonName,pokemonUrl, addFavorites}) {
+  //Get ID from the url 
+  const url = pokemonUrl.split('/');
+  const pokemonID = url[6];
 
   return (
-    <Card sx={{ 
-      maxWidth: 300,
-      maxHeight: 375,
-      m : 1
-      }}>
-      <CardMedia
-        component="img"
-        height="140"
-        src = {""}
-        alt=""
-      />
-      <CardContent>
-        <Typography variant="subtitle">
-          #ID Pokemon
-        </Typography>
-        <Typography gutterBottom variant="h5" component="div">
-          Nom du pokémon
-        </Typography>
-        <BadgeType/>
-      </CardContent>
-      <CardActions
-      sx={{
-        display :'flex',
-        justifyContent : 'flex-end',
-      }}
+    <div>
+      <Card
+        sx={{
+          m: 1,
+        }}
       >
-        <Button 
-        size = "large"
-        color = "secondary"
-        fontWeight = "bolder"
-        padding = '5px'
-        endIcon={<DoubleArrowIcon />}
-        > Détails </Button>
-      </CardActions>
-    </Card>
+        <CardMedia
+          component="img"
+          width="250px"
+          height="250px"
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonID}.svg`}
+          alt=""
+        />
+        <CardContent>
+          <Typography variant="subtitle">#{pokemonID}</Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            {pokemonName}
+          </Typography>
+        </CardContent>
+        <CardActions
+          sx={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <StarBorderIcon
+            color="secondary"
+            onClick={() => addFavorites(
+              {name : pokemonName.toString(),
+              id : pokemonID.toString()
+              }
+            )}
+          />
+          <Button
+            size="25px"
+            color="secondary"
+            fontWeight="bolder"
+            padding="5px"
+            endIcon={<DoubleArrowIcon />}
+          >
+            <Link to="/pokemonCard" state={pokemonName}>
+              Détails
+            </Link>
+          </Button>
+        </CardActions>
+      </Card>
+    </div>
   );
 }
 

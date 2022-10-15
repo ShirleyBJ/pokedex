@@ -5,30 +5,68 @@ import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
 
 import * as React from "react";
-import { Box, Card, CardContent, CardMedia, Typography } from "@mui/material";
+import { useQuery } from "react-query";
+import { Link, useLocation, useParams} from 'react-router-dom'
+
+import { Box, Card, CardContent, CardMedia, Typography , Button} from "@mui/material";
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 function PokemonCard() {
+  const location = useLocation();
+  const pokemonName = location.state;
+
+  //Use params from url
+  const {pokemonParamsName} = useParams();
+
+  const { isLoading, data, error } = useQuery("detailsPokemon", () =>
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName == null ? pokemonParamsName : pokemonName}`)
+    .then((res) =>
+      res.json()
+    )
+  );
+
+  if(isLoading) return 'Loading...'
+
+  if(error) return 'An error occurred ' + error.message
+
+
+  //Function to convert weight into kilograms
+const convertToKilogram = (weight) => {
+  let weightKilogram = weight * 0.1;
+  return weightKilogram ;
+}
+
+//Function to convert height into centimeter
+const convertToCentimeter= (height) =>{
+  let heightToCentimeter = height * 10 ;
+  return heightToCentimeter;
+}
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: "30%",
+      }}
+    >
       <CardMedia
         component="img"
-        height="240"
-        image="https://resize-gulli.jnsmedia.fr/r/890,__ym__/img//var/jeunesse/storage/images/gulli/chaine-tv/dessins-animes/pokemon/pokemon/pikachu/26571681-1-fre-FR/Pikachu.jpg"
+        objectfit="cover"
+        image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${data.id}.svg`}
         alt=""
       />
-      <CardContent>
+      <CardContent sx={{ textAlign: "center" }}>
         <Typography gutterBottom variant="subtitle">
-          #ID Pokémon
+          #{data.id}
         </Typography>
         <Typography gutterBottom variant="h5" component="div">
-          Nom Pokémon
+          {pokemonName}
         </Typography>
-        <BadgeType />
+        <BadgeType typeList={data} />
         <Typography variant="body2" color="text.secondary">
           Description Pokémon
         </Typography>
         <CardSubtitle title="Abilities" />
-        <BadgeAbilities />
+        <BadgeAbilities abilitiesList={data} />
         <Box
           sx={{
             display: "flex",
@@ -37,18 +75,19 @@ function PokemonCard() {
         >
           <div>
             <CardSubtitle title="Height" />
-            <Badge height="2" />
+            <Badge height={convertToCentimeter(data.height)} />
           </div>
           <div>
             <CardSubtitle title="Weight" />
-            <Badge weight="9" />
+            <Badge weight= {convertToKilogram(data.weight)} />
           </div>
         </Box>
         <CardSubtitle title="Stats" />
-        <StatBar stats={98} statTitle="HP" />
-        <StatBar stats={55} statTitle="Attaque" />
-        <StatBar stats={88} statTitle="Défense" />
+        <StatBar statsDetails={data} />
       </CardContent>
+      <Box sx={{width: '100%', textAlign: 'center'}}>
+        <Link to="/pokemonList"><Button variant="text"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
+      </Box>
     </Card>
   );
 }
