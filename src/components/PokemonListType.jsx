@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import Lists from './Lists'
 import "./BadgeType.scss";
 
 import { useQuery } from "react-query";
@@ -26,7 +25,6 @@ function PokemonListType() {
     )
   }
 
-  console.log(value);
   console.log(filteredPokemonType);
 
   if (isLoading) return "Loading...";
