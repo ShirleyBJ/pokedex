@@ -7,6 +7,8 @@ import Home from './components/Home';
 import Favorites from './components/Favorites';
 import PokemonList from './components/PokemonsList';
 import PokemonCard from './components/PokemonCard';
+import PokemonListType from './components/PokemonListType';
+import Contact from './components/Contact';
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -34,12 +36,20 @@ const router = createBrowserRouter([
         element: <PokemonList/>
       },
       {
+        path : "/pokemonListType",
+        element: <PokemonListType/>
+      },
+      {
         path : "/pokemonCard",
         element: <PokemonCard/>
       },
       {
         path : "/pokemonCard/:pokemonParamsName",
         element: <PokemonCard/>
+      },
+      {
+        path : "/contact",
+        element: <Contact/>
       },
     ]
   },

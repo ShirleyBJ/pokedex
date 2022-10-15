@@ -15,7 +15,6 @@ function Favorites() {
     setUpdateLocalStorage(updatedPokemon);
   }
 
-  console.log(updateLocalStorage);
 
   useEffect(() => {
     localStorage.setItem('pokemons', JSON.stringify(updateLocalStorage));

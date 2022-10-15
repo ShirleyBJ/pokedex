@@ -5,8 +5,6 @@ import {useSearchParams, createSearchParams} from "react-router-dom"
 
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
-import SelectType from "./SelectType";
-
 
 function PokemonsList() {
 
@@ -37,7 +35,6 @@ function PokemonsList() {
   return (
     <>
       <SearchBar handleChange={handleChange} value={value} />
-      <SelectType/>
       <Lists data={data} filteredPokemon={filteredPokemon}/>
     </>
   );

@@ -1,7 +1,6 @@
 import "./BadgeType.scss";
 import Chip from "@mui/material/Chip";
 
-//TODO: change the color of label whith types of pokemon
 function BadgeType({typeList}) {
   return (
     <>

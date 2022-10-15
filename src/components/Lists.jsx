@@ -7,7 +7,6 @@ function Lists({ data , filteredPokemon = []}){
   if (filteredPokemon.length === 0) { 
     filteredPokemon = data.results
   }
-  
 
 const getPokemonInitialState = () => {
   const pokemon = JSON.parse(localStorage.getItem('pokemons'));
