@@ -3,9 +3,9 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import {useSearchParams, createSearchParams} from "react-router-dom"
 
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/SearchBar";
 import Lists from "./Lists";
-import Loader from "./Loader"
+import Loader from "../components/Loader"
 
 function PokemonsList() {
 

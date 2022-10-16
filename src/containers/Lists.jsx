@@ -1,7 +1,7 @@
 import { Container, Box } from "@mui/material";
 import React, {useEffect, useState} from 'react';
 
-import Pokemon from "./Pokemon";
+import Pokemon from "../components/Pokemon";
 
 function Lists({ data , filteredPokemon = [], params}){
   if (filteredPokemon.length === 0) { 

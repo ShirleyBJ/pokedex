@@ -10,9 +10,6 @@ import Typography from "@mui/material/Typography";
 import DoubleArrowIcon from '@mui/icons-material/DoubleArrow';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-//TODO: Put first letter of the name in upperCase
-//TODO: Pass id/name in the link by slug 
-
 function Pokemon({pokemonName,pokemonUrl, addFavorites}) {
   //Get ID from the url 
   const pokemonID = pokemonUrl.split("/")[6];

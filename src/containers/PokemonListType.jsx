@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from "react";
 
-import "./BadgeType.scss";
-import BadgeListType from './BadgeListType'
-import ListsType from './ListsType'
+import "../components/BadgeType.scss";
+import BadgeListType from '../components/BadgeListType'
+import ListsType from '../components/ListsType'
 
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
