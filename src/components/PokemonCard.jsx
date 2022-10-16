@@ -86,7 +86,7 @@ const convertToCentimeter= (height) =>{
         <StatBar statsDetails={data} />
       </CardContent>
       <Box sx={{width: '100%', textAlign: 'center'}}>
-        <Link to="/pokemonList"><Button variant="text"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
+        <Link to="/pokemonList"><Button variant="text" color="secondary"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
       </Box>
     </Card>
   );

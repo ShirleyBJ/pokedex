@@ -32,7 +32,7 @@ function PokemonListType() {
       <h1> Pokémon's types</h1>
       </Box>
       <BadgeListType searchByType = {searchByType}/>
-      <ListsType valueFilteredType={valueFilteredType}/>
+      <ListsType valueFilteredType={valueFilteredType} valueSelected={valueType}/>
     </Container>
   );
 }

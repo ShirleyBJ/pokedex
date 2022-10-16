@@ -17,7 +17,7 @@ function PokemonsList() {
   //Filtering pokemon data
   const [value, setValue] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState();
-  const [params, setParams] = useSearchParams();
+  const [, setParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value);

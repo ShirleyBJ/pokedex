@@ -12,3 +12,22 @@ code {
     monospace;
 }
 
+.home{
+  width: 100%;
+  height:80vh;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5px;
+}
+.home-desription{
+  width: 40%;
+  text-align: center;
+}
+.home-img{
+  width: 60%;
+  margin-right: 15px;
+  background-image: url("img/pokemon-scarlet-and-violet-closer-look-at-the-paldea-region.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
+}

@@ -1,18 +1,45 @@
+import React, {useState, useEffect} from "react";
 import { Container, Box } from "@mui/material";
-import React from "react";
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 
 import Pokemon from "./Pokemon";
 
-function ListsType({ valueFilteredType }) {
-  console.log(valueFilteredType)
-  if (valueFilteredType === "" || valueFilteredType === undefined || valueFilteredType.pokemon.length === 0) {
-    return (
-      <>
-      </>
-    );
+function ListsType({ valueFilteredType, valueSelected }) {
+  const getPokemonInitialState = () => {
+    const pokemon = JSON.parse(localStorage.getItem('pokemons'));
+    if (pokemon) {
+      return pokemon;
+    } else {
+      return [];
+    }
   }
+  const [pokemonStored, setPokemonStored] = useState(getPokemonInitialState);
+  
+    const addFavorites = (e) => {
+      const ifExists = pokemonStored.findIndex((pokemon) => pokemon.id === e.id);
+      if (ifExists === -1) {
+        setPokemonStored([...pokemonStored, e]);
+      }
+    }
+  
+    useEffect(() => {
+      localStorage.setItem('pokemons', JSON.stringify(pokemonStored));
+    }, [pokemonStored]);
+
+    if (valueFilteredType === "" || valueFilteredType === undefined ) {
+      return (
+        <>
+        </>
+      );
+    }else if( valueFilteredType.pokemon.length === 0){
+    return (
+      <Stack sx={{ width: '50%' }} spacing={2}>
+        <Alert severity="info"><p>No pokémon found for <em>{valueSelected}</em> type. Try another type... </p></Alert>
+      </Stack>
+    );
+    }
+
   return (
     <>
       <Container
@@ -46,6 +73,7 @@ function ListsType({ valueFilteredType }) {
               key={index}
               pokemonName={pokemon.pokemon.name}
               pokemonUrl={pokemon.pokemon.url}
+              addFavorites={addFavorites}
             />
           ))}
         </Box>
