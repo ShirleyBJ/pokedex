@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { useQuery } from "react-query";
+import {MainContext, useMainContext} from "../contexts/Main";
 
 import "./BadgeType.scss";
 import BadgeListType from './BadgeListType'
@@ -8,34 +9,30 @@ import ListsType from './ListsType'
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
-import {useMainContext} from "../contexts/Main";
-
-
 function PokemonListType() {
   //Filtering pokemon by typeList
-  const [value, setValue] = useState("");
-  const [filteredPokemonType, setFilteredPokemonType] = useState();
-
-  //Context
-  const {allPokemon} = useMainContext();
+  const [valueType, setValueType] = useState("");
+  const [valueFilteredType, setValueFilteredType] = useState("");
 
   //Search Type function 
   const searchByType = (e) => {
-    setValue(e);
-
-    setFilteredPokemonType(
-      // allPokemon.filter((pokemon, index) => pokemon.types.includes(e).toLowerCase())
-    )
+    setValueType(e);
+    getPokemonByType(e);
   }
-  console.log(value)
+
+  const getPokemonByType = async (valueType) => {
+    const response = await fetch(`https://pokeapi.co/api/v2/type/${valueType}`);
+    const results = await response.json();
+    setValueFilteredType(results);
+  }
 
   return (
     <Container>
       <Box sx={{textAlign: "center", m:5}}>
       <h1> Pokémon's types</h1>
       </Box>
-      <BadgeListType searchByType={searchByType}/>
-      <ListsType/>
+      <BadgeListType searchByType = {searchByType}/>
+      <ListsType valueFilteredType={valueFilteredType}/>
     </Container>
   );
 }

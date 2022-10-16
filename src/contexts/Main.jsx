@@ -6,9 +6,9 @@ export default MainContext;
 
 export const MainProvider = ({ children }) => {
     const [allPokemon, setAllPokemon] = useState();
-
+    const [listType, setListType] = useState();
     return(
-        <MainContext.Provider value={{allPokemon, setAllPokemon}}>
+        <MainContext.Provider value={{allPokemon, setAllPokemon, listType, setListType}}>
             {children}
         </MainContext.Provider>
     );

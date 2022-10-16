@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import {useSearchParams, createSearchParams} from "react-router-dom"
-import {useMainContext} from "../contexts/Main"
 
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
@@ -18,9 +17,6 @@ function PokemonsList() {
   const [value, setValue] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState();
   const [params, setParams] = useSearchParams();
-
-  const {setAllPokemon} = useMainContext();
-  setAllPokemon(data);
 
   const handleChange = (e) => {
     setValue(e.target.value);
