@@ -4,7 +4,6 @@ import React from "react";
 import Pokemon from "./Pokemon";
 
 function ListsType({ valueFilteredType }) {
-  console.log(valueFilteredType);
   if (valueFilteredType === "" || valueFilteredType === undefined) {
     return (
       <div>
