@@ -14,7 +14,7 @@ function Footer() {
           color: "white"
         }}
       >
-        <p> Copyright © 2022 | Shirley BERCHEL - M1 Tech Lead</p>
+        <p> Shirley BERCHEL - M1 Tech Lead</p>
       </Box>
     </>
   );

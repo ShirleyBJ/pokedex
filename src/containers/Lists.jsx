@@ -1,9 +1,9 @@
 import { Container, Box } from "@mui/material";
 import React, {useEffect, useState} from 'react';
 
-import Pokemon from "./Pokemon";
+import Pokemon from "../components/Pokemon";
 
-function Lists({ data , filteredPokemon = []}){
+function Lists({ data , filteredPokemon = [], params}){
   if (filteredPokemon.length === 0) { 
     filteredPokemon = data.results
   }
@@ -20,7 +20,6 @@ const [pokemonStored, setPokemonStored] = useState(getPokemonInitialState);
 
   const addFavorites = (e) => {
     const ifExists = pokemonStored.findIndex((pokemon) => pokemon.id === e.id);
-    // console.log(ifExists);
     if (ifExists === -1) {
       setPokemonStored([...pokemonStored, e]);
     }
@@ -29,8 +28,6 @@ const [pokemonStored, setPokemonStored] = useState(getPokemonInitialState);
   useEffect(() => {
     localStorage.setItem('pokemons', JSON.stringify(pokemonStored));
   }, [pokemonStored]);
-
-  console.log(pokemonStored);
 
     return (
       <>

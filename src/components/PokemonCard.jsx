@@ -3,12 +3,13 @@ import BadgeAbilities from "./BadgeAbilities";
 import Badge from "./Badge";
 import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
+import Loader from "./Loader";
 
 import * as React from "react";
 import { useQuery } from "react-query";
 import { Link, useLocation, useParams} from 'react-router-dom'
 
-import { Box, Card, CardContent, CardMedia, Typography , Button} from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography , Button, Container} from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 function PokemonCard() {
@@ -25,7 +26,9 @@ function PokemonCard() {
     )
   );
 
-  if(isLoading) return 'Loading...'
+  if(isLoading) return (
+    <Loader/>
+  )
 
   if(error) return 'An error occurred ' + error.message
 
@@ -43,10 +46,10 @@ const convertToCentimeter= (height) =>{
 }
 
   return (
-    <Card
-      sx={{
-        maxWidth: "30%",
-      }}
+    <Container
+      sx={{display : 'flex', justifyContent : 'center', width : '100%'}}
+    >
+    <Card style={{width : "30%"}}
     >
       <CardMedia
         component="img"
@@ -86,9 +89,10 @@ const convertToCentimeter= (height) =>{
         <StatBar statsDetails={data} />
       </CardContent>
       <Box sx={{width: '100%', textAlign: 'center'}}>
-        <Link to="/pokemonList"><Button variant="text"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
+        <Link to="/pokemonList"><Button variant="text" color="secondary"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
       </Box>
     </Card>
+    </Container>
   );
 }
 

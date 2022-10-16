@@ -3,8 +3,9 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import {useSearchParams, createSearchParams} from "react-router-dom"
 
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/SearchBar";
 import Lists from "./Lists";
+import Loader from "../components/Loader"
 
 function PokemonsList() {
 
@@ -16,7 +17,7 @@ function PokemonsList() {
   //Filtering pokemon data
   const [value, setValue] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState();
-  const [params, setParams] = useSearchParams();
+  const [, setParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -28,7 +29,9 @@ function PokemonsList() {
     );
   };
 
-  if (isLoading) return "Loading...";
+  if(isLoading) return (
+    <Loader/>
+  )
 
   if (error) return "An error has occured " + error.message;
 

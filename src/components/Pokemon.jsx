@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
 
 import Card from "@mui/material/Card";
@@ -12,9 +12,9 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 function Pokemon({pokemonName,pokemonUrl, addFavorites}) {
   //Get ID from the url 
-  const url = pokemonUrl.split('/');
-  const pokemonID = url[6];
+  const pokemonID = pokemonUrl.split("/")[6];
 
+  //Get pokemon image
   return (
     <div>
       <Card

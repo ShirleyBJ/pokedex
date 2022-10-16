@@ -69,7 +69,8 @@ export default function Navbar() {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={handleClose} sx={{color : "secondary", mr:1}}><Link to="/pokemonList"><CatchingPokemonTwoToneIcon sx={{color : "secondary", mr:1}} />Pokémons</Link></MenuItem>
+        <MenuItem onClick={handleClose} sx={{color : "secondary", mr:1}}>
+          <Link to="/pokemonList"><CatchingPokemonTwoToneIcon sx={{color : "secondary", mr:1}} />Pokémons</Link></MenuItem>
         <MenuItem onClick={handleClose} sx={{color : "secondary"}}><Link to="/pokemonListType"><FilterAltIcon/>Pokémon's Type</Link></MenuItem>
         <MenuItem onClick={handleClose} sx={{color : "secondary", mr:1}}>
           <Link to="/favorites">
