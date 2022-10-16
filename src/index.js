@@ -37,6 +37,10 @@ const router = createBrowserRouter([
         element: <PokemonList />
       },
       {
+        path: "/pokemonList/:pokemonParamsName",
+        element: <PokemonCard />
+      },
+      {
         path: "/pokemonListType",
         element: <PokemonListType />
       },

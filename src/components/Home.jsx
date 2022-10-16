@@ -15,7 +15,7 @@ function Home(){
                     <p>Each Pokémon has a value for each stat which grows as they gain levels and can be altered momentarily by effects in battles.</p>
                     <p>Types are properties for Pokémon and their moves. </p>
                     
-                        <Link underline="none" to="/pokemonList" >
+                        <Link style={{textDecoration : 'none'}} to="/pokemonList" >
                             <Button variant="contained" color="secondary">Open the pokédex</Button></Link>
                     
                     </Paper>
