@@ -1,14 +1,16 @@
 import { Container, Box } from "@mui/material";
 import React from "react";
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 import Pokemon from "./Pokemon";
 
 function ListsType({ valueFilteredType }) {
-  if (valueFilteredType === "" || valueFilteredType === undefined) {
+  console.log(valueFilteredType)
+  if (valueFilteredType === "" || valueFilteredType === undefined || valueFilteredType.pokemon.length === 0) {
     return (
-      <div>
-        <h1>Choose a type</h1>
-      </div>
+      <>
+      </>
     );
   }
   return (

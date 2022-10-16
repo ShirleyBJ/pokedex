@@ -5,6 +5,7 @@ import {useSearchParams, createSearchParams} from "react-router-dom"
 
 import SearchBar from "./SearchBar";
 import Lists from "./Lists";
+import Loader from "./Loader"
 
 function PokemonsList() {
 
@@ -28,7 +29,9 @@ function PokemonsList() {
     );
   };
 
-  if (isLoading) return "Loading...";
+  if(isLoading) return (
+    <Loader/>
+  )
 
   if (error) return "An error has occured " + error.message;
 
