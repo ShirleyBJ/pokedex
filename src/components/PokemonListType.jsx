@@ -1,6 +1,4 @@
 import React, {useState,useEffect} from "react";
-import { useQuery } from "react-query";
-import {MainContext, useMainContext} from "../contexts/Main";
 
 import "./BadgeType.scss";
 import BadgeListType from './BadgeListType'

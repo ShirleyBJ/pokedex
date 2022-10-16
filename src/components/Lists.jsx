@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 
 import Pokemon from "./Pokemon";
 
-function Lists({ data , filteredPokemon = []}){
+function Lists({ data , filteredPokemon = [], params}){
   if (filteredPokemon.length === 0) { 
     filteredPokemon = data.results
   }

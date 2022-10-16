@@ -3,6 +3,7 @@ import BadgeAbilities from "./BadgeAbilities";
 import Badge from "./Badge";
 import CardSubtitle from "./CardTitle";
 import StatBar from "./StatBar";
+import Loader from "./Loader";
 
 import * as React from "react";
 import { useQuery } from "react-query";
@@ -25,7 +26,9 @@ function PokemonCard() {
     )
   );
 
-  if(isLoading) return 'Loading...'
+  if(isLoading) return (
+    <Loader/>
+  )
 
   if(error) return 'An error occurred ' + error.message
 

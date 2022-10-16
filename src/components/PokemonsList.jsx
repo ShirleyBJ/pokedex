@@ -17,7 +17,7 @@ function PokemonsList() {
   //Filtering pokemon data
   const [value, setValue] = useState("");
   const [filteredPokemon, setFilteredPokemon] = useState();
-  const [, setParams] = useSearchParams();
+  const [params, setParams] = useSearchParams();
 
   const handleChange = (e) => {
     setValue(e.target.value);
@@ -38,7 +38,7 @@ function PokemonsList() {
   return (
     <>
       <SearchBar handleChange={handleChange} value={value} />
-      <Lists data={data} filteredPokemon={filteredPokemon}/>
+      <Lists data={data} filteredPokemon={filteredPokemon} params={params}/>
     </>
   );
 }

@@ -4,12 +4,16 @@ import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
+import Loader from './Loader'
+
 function MenuBadgeType({ searchByType }) {
   const { isLoading, data, error } = useQuery("pokemonUrl", () =>
     fetch("https://pokeapi.co/api/v2/type/").then((res) => res.json())
   );
 
-  if (isLoading) return "Loading...";
+  if(isLoading) return (
+    <Loader/>
+  )
 
   if (error) return "An error has occured " + error.message;
   return (
