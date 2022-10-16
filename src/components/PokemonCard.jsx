@@ -9,7 +9,7 @@ import * as React from "react";
 import { useQuery } from "react-query";
 import { Link, useLocation, useParams} from 'react-router-dom'
 
-import { Box, Card, CardContent, CardMedia, Typography , Button} from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Typography , Button, Container} from "@mui/material";
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 function PokemonCard() {
@@ -46,10 +46,10 @@ const convertToCentimeter= (height) =>{
 }
 
   return (
-    <Card
-      sx={{
-        maxWidth: "30%",
-      }}
+    <Container
+      sx={{display : 'flex', justifyContent : 'center', width : '100%'}}
+    >
+    <Card style={{width : "30%"}}
     >
       <CardMedia
         component="img"
@@ -92,6 +92,7 @@ const convertToCentimeter= (height) =>{
         <Link to="/pokemonList"><Button variant="text" color="secondary"><KeyboardReturnIcon sx={{mr:1}}/> Back to Pokemon List</Button></Link>
       </Box>
     </Card>
+    </Container>
   );
 }
 
